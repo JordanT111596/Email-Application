@@ -1,2 +1,2 @@
-# Email-Application
+# EmailApplication
 More Java Practice
