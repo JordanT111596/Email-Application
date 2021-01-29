@@ -8,7 +8,7 @@ public class Email {
     private String password;
     private String department;
     private String email;
-    private int mailboxCapacity;
+    private int mailboxCapacity = 500;
     private int defaultPasswordLength = 10;
     private String alternateEmail;
     private String companySuffix = "jjindustries";
@@ -43,9 +43,9 @@ public class Email {
         //Next number entered will be department choice
         int depChoice = scanner.nextInt();
         //If-Else corresponding with department numbers
-        if (depChoice == 1) { return "Sales"; }
-        else if (depChoice == 2) { return "Development"; }
-        else if (depChoice == 3) { return "Accounting"; }
+        if (depChoice == 1) { return "sales"; }
+        else if (depChoice == 2) { return "development"; }
+        else if (depChoice == 3) { return "accounting"; }
         else { return ""; }
     }
 
@@ -62,7 +62,27 @@ public class Email {
         return new String(password);
     }
 
-    //Sets the alternate email
+    //Sets the mailbox capacity with public API
+    public void setMailboxCapacity(int capacity) {
+        this.mailboxCapacity = capacity;
+    }
 
-    //Changes the password
+    //Sets the alternate email with public API
+    public void setAlternateEmail(String altEmail) {
+        this.alternateEmail = altEmail;
+    }
+
+    //Changes the password with public API
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
+    //Retrieves mailbox capacity with public API
+    public int getMailboxCapacity() { return mailboxCapacity; }
+
+    //Retrieves alternate email with public API
+    public String getAlternateEmail() { return alternateEmail; }
+
+    //Retrieves password with public API
+    public String getPassword() { return password; }
 }
