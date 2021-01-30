@@ -22,7 +22,6 @@ public class Email {
 
         //Calls method asking for the department, then returns the response
         this.department = setDepartment();
-        System.out.println("You selected " + this.department);
 
         //Calls method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
@@ -30,13 +29,11 @@ public class Email {
 
         //Combines user data to generate the email address
         email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix + ".com";
-        System.out.println("Your email is: " + email);
     }
 
     //Asks for the department
     private String setDepartment() {
         //Prints menu
-        System.out.println("\n");
         System.out.println("Enter your department number!\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none");
         //Initialize scanner
         Scanner scanner = new Scanner(System.in);
@@ -85,4 +82,9 @@ public class Email {
 
     //Retrieves password with public API
     public String getPassword() { return password; }
+
+    //Shows info requested (display name, company email, and mailbox capacity)
+    public String showInfo() {
+        return "Your display name is: " + firstName + " " + lastName + "\n" + "Your company email is: " + email + "\n" + "Your mailbox capacity is: " + mailboxCapacity + "mb";
+    }
 }
