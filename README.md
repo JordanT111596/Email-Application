@@ -3,7 +3,7 @@ More Java Practice for me.
 
 Scenario: You are an IT Support Administrator Specialist and are charged with the task of creating email accounts for new hires.
 
-## Your application should do the following
+## The application should do the following
 
 * Generate an email with the following syntax: firstname.lastname@department.company.com
 * Determine the department (Sales, Development, Accounting), if none, leave blank
