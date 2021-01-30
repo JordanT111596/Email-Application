@@ -24,6 +24,7 @@ public class EmailApplication {
         Scanner userScanner = new Scanner(System.in);
         // Next string entered will be the first name
         String fName = userScanner.next();
+        userScanner.close();
         // returns the first name
         return fName;
     }
@@ -36,6 +37,7 @@ public class EmailApplication {
         Scanner userScanner = new Scanner(System.in);
         // Next string entered will be the last name
         String lName = userScanner.next();
+        userScanner.close();
         // returns the last name
         return lName;
     }

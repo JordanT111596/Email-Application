@@ -43,12 +43,16 @@ public class Email {
         int depChoice = scanner.nextInt();
         // If-Else corresponding with department numbers
         if (depChoice == 1) {
+            scanner.close();
             return "sales";
         } else if (depChoice == 2) {
+            scanner.close();
             return "development";
         } else if (depChoice == 3) {
+            scanner.close();
             return "accounting";
         } else {
+            scanner.close();
             return "";
         }
     }
