@@ -14,6 +14,9 @@ public class EmailApplication {
         Email user1 = new Email(firstName, lastName);
 
         System.out.println(user1.showInfo());
+
+        // Post sign-in menu started
+        user1.postMenu();
     }
 
     // Asks for first name from user
