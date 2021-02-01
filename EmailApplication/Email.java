@@ -51,21 +51,26 @@ public class Email {
                     // Switch corresponding with department numbers
                     case 0: {
                         deptCheck = true;
+                        break;
                     }
                     case 1: {
                         deptCheck = true;
                         departmentPick = "sales";
+                        break;
                     }
                     case 2: {
                         deptCheck = true;
                         departmentPick = "development";
+                        break;
                     }
                     case 3: {
                         deptCheck = true;
                         departmentPick = "accounting";
+                        break;
                     }
                     default: {
                         System.out.println("Please type your corresponding department number!");
+                        break;
                     }
                 }
             } catch (InputMismatchException e) {
@@ -178,7 +183,7 @@ public class Email {
                         // input, then restarts menu
                         System.out.println("\nWhat would you like to change your mailbox capacity to? (in MB)");
                         this.setMailboxCapacity(menuScanner.nextInt());
-                        System.out.println("Change successful! Your mailbox capacity is now " + this.mailboxCapacity);
+                        System.out.println("Change successful! Your mailbox capacity is now " + this.mailboxCapacity + "mb");
                         break;
                     case 5:
                         // Begins process for changing the user's first and last name with a scanner
