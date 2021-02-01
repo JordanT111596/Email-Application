@@ -14,7 +14,7 @@ public class Email {
     private String alternateEmail;
     private String companySuffix = "jjindustries";
 
-    // Constructor to receive the first and last name, department,
+    // Constructor to receive the first and last name, department, set the email and password, and display them to the user
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,16 +37,16 @@ public class Email {
     private String setDepartment() {
         String departmentPick = "";
         // Prints menu
-        System.out
-                .println("Enter your department number!\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none");
+        System.out.println("Enter your department number!\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none");
         // Initialize scanner
         Scanner deptScanner = new Scanner(System.in);
+        //Boolean to check if department has been chosen successfully
         boolean deptCheck = false;
         int depChoice;
         while (deptCheck == false) {
             // Next number entered will be department choice
             try {
-                depChoice = (int) deptScanner.nextInt();
+                depChoice = deptScanner.nextInt();
                 switch (depChoice) {
                     // Switch corresponding with department numbers
                     case 0: {
@@ -73,6 +73,7 @@ public class Email {
                         break;
                     }
                 }
+            //Catches error if user enters anything that isn't an integer
             } catch (InputMismatchException e) {
                 System.out.println("Please type your corresponding department number!");
                 deptScanner.next();
@@ -141,10 +142,8 @@ public class Email {
         this.lastName = lName;
     }
 
-    /*
-     * Initializes menu options for viewing info, changing password, setting
-     * alternate email, setting mailbox capacity, and changing first and last name
-     */
+    /* Initializes menu options for viewing info, changing password, setting
+    alternate email, setting mailbox capacity, and changing first and last name */
     public void postMenu() {
 
         int menuChoice = 0;
@@ -183,7 +182,8 @@ public class Email {
                         // input, then restarts menu
                         System.out.println("\nWhat would you like to change your mailbox capacity to? (in MB)");
                         this.setMailboxCapacity(menuScanner.nextInt());
-                        System.out.println("Change successful! Your mailbox capacity is now " + this.mailboxCapacity + "mb");
+                        System.out.println(
+                                "Change successful! Your mailbox capacity is now " + this.mailboxCapacity + "mb");
                         break;
                     case 5:
                         // Begins process for changing the user's first and last name with a scanner
@@ -197,8 +197,7 @@ public class Email {
                         break;
                     case 6:
                         // Closes the program
-                        System.out
-                                .println("The program is now ending.\nThank you for using Jordan's Email Application!");
+                        System.out.println("The program is now ending.\nThank you for using Jordan's Email Application!");
                         menuScanner.close();
                         System.exit(0);
                         break;
@@ -208,6 +207,7 @@ public class Email {
                         System.out.println("\nPlease enter a valid integer corresponding with your choice");
                         break;
                 }
+            //Catches error if user enters anything that isn't an integer
             } catch (InputMismatchException e) {
                 System.out.println("Please type your corresponding menu choice!");
                 menuScanner.next();
