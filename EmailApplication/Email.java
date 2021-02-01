@@ -1,5 +1,6 @@
 package EmailApplication;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Email {
@@ -34,23 +35,46 @@ public class Email {
 
     // Asks for the department
     private String setDepartment() {
+        String departmentPick = "";
         // Prints menu
         System.out
                 .println("Enter your department number!\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none");
         // Initialize scanner
         Scanner deptScanner = new Scanner(System.in);
-        // Next number entered will be department choice
-        int depChoice = deptScanner.nextInt();
-        // If-Else corresponding with department numbers
-        if (depChoice == 1) {
-            return "sales";
-        } else if (depChoice == 2) {
-            return "development";
-        } else if (depChoice == 3) {
-            return "accounting";
-        } else {
-            return "";
+        boolean deptCheck = false;
+        int depChoice;
+        while (deptCheck == false) {
+            // Next number entered will be department choice
+            try {
+                depChoice = (int) deptScanner.nextInt();
+                switch (depChoice) {
+                    // Switch corresponding with department numbers
+                    case 0: {
+                        deptCheck = true;
+                    }
+                    case 1: {
+                        deptCheck = true;
+                        departmentPick = "sales";
+                    }
+                    case 2: {
+                        deptCheck = true;
+                        departmentPick = "development";
+                    }
+                    case 3: {
+                        deptCheck = true;
+                        departmentPick = "accounting";
+                    }
+                    default: {
+                        System.out.println("Please type your corresponding department number!");
+                    }
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please type your corresponding department number!");
+                deptScanner.next();
+            }
         }
+
+        return departmentPick;
     }
 
     // Generates a random password
@@ -112,74 +136,78 @@ public class Email {
         this.lastName = lName;
     }
 
-    /* Initializes menu options for viewing info, changing password, setting
-    alternate email, setting mailbox capacity, and changing first and last name */
+    /*
+     * Initializes menu options for viewing info, changing password, setting
+     * alternate email, setting mailbox capacity, and changing first and last name
+     */
     public void postMenu() {
 
         int menuChoice = 0;
+        Scanner menuScanner = new Scanner(System.in);
+        // while the menu choice is not 6 continue with menu choices.
+        while (menuChoice != 6) {
 
-        do {
-            switch (menuChoice) {
-                case 0:
-                    // Asks user question to begin menu
-                    System.out.println(
-                            "\nWhat would you like to do?\n1. View Info\n2. Change Password\n3. Set Alternate Email\n4. Set Mailbox Capacity\n5. Change display name\n6. Exit");
-                    // Scanner created to capture user choice via integer input
-                    Scanner menuScanner = new Scanner(System.in);
-                    menuChoice = menuScanner.nextInt();
-                case 1:
-                    // Shows user info before restarting the menu
-                    System.out.println(this.showInfo());
-                    menuChoice = 0;
-                    break;
-                case 2:
-                    // Begins process for changing the password with a scanner input, then restarts menu
-                    System.out.println("\nWhat would you like to change your password to?");
-                    Scanner pwScanner = new Scanner(System.in);
-                    this.changePassword(pwScanner.next());
-                    System.out.println("Change successful! Your password is now " + this.password);
-                    menuChoice = 0;
-                    break;
-                case 3:
-                    // Begins process for changing the alternate email with a scanner input, then restarts menu
-                    System.out.println("\nWhat email would you like to set as your alternate?");
-                    Scanner altScanner = new Scanner(System.in);
-                    this.setAlternateEmail(altScanner.next());
-                    System.out.println("Change successful! Your alternate email is now " + this.alternateEmail);
-                    menuChoice = 0;
-                    break;
-                case 4:
-                    // Begins process for changing the mailbox capacity with a scanner integer input, then restarts menu
-                    System.out.println("\nWhat would you like to change your mailbox capacity to? (in MB)");
-                    Scanner capScanner = new Scanner(System.in);
-                    this.setMailboxCapacity(capScanner.nextInt());
-                    System.out.println("Change successful! Your mailbox capacity is now " + this.mailboxCapacity);
-                    menuChoice = 0;
-                    break;
-                case 5:
-                    // Begins process for changing the user's first and last name with a scanner input, then restarts menu
-                    System.out.println("\nWhat is your first name?");
-                    Scanner firstNameScanner = new Scanner(System.in);
-                    this.setFirstName(firstNameScanner.next());
-                    System.out.println("Change successful! Your first name is now " + this.firstName);
-                    System.out.println("\nWhat is your last name?");
-                    Scanner lastNameScanner = new Scanner(System.in);
-                    this.setLastName(lastNameScanner.next());
-                    System.out.println("Change successful! Your last name is now " + this.lastName);
-                    menuChoice = 0;
-                    break;
-                case 6:
-                    // Closes the program
-                    break;
-                default:
-                    // If user enters an unavailable number, a message is displayed and the menu restarts
-                    System.out.println("\nPlease enter a valid integer corresponding with your choice");
-                    menuChoice = 0;
-                    break;
+            try {
+                // Asks user question to begin menu
+                System.out.println(
+                        "\nWhat would you like to do?\n1. View Info\n2. Change Password\n3. Set Alternate Email\n4. Set Mailbox Capacity\n5. Change display name\n6. Exit");
+                // Scanner created to capture user choice via integer input
+                menuChoice = menuScanner.nextInt();
+
+                switch (menuChoice) {
+                    case 1:
+                        // Shows user info before restarting the menu
+                        System.out.println(this.showInfo());
+                        break;
+                    case 2:
+                        // Begins process for changing the password with a scanner input, then restarts
+                        // menu
+                        System.out.println("\nWhat would you like to change your password to?");
+                        this.changePassword(menuScanner.next());
+                        System.out.println("Change successful! Your password is now " + this.password);
+                        break;
+                    case 3:
+                        // Begins process for changing the alternate email with a scanner input, then
+                        // restarts menu
+                        System.out.println("\nWhat email would you like to set as your alternate?");
+                        this.setAlternateEmail(menuScanner.next());
+                        System.out.println("Change successful! Your alternate email is now " + this.alternateEmail);
+                        break;
+                    case 4:
+                        // Begins process for changing the mailbox capacity with a scanner integer
+                        // input, then restarts menu
+                        System.out.println("\nWhat would you like to change your mailbox capacity to? (in MB)");
+                        this.setMailboxCapacity(menuScanner.nextInt());
+                        System.out.println("Change successful! Your mailbox capacity is now " + this.mailboxCapacity);
+                        break;
+                    case 5:
+                        // Begins process for changing the user's first and last name with a scanner
+                        // input, then restarts menu
+                        System.out.println("\nWhat is your first name?");
+                        this.setFirstName(menuScanner.next());
+                        System.out.println("Change successful! Your first name is now " + this.firstName);
+                        System.out.println("\nWhat is your last name?");
+                        this.setLastName(menuScanner.next());
+                        System.out.println("Change successful! Your last name is now " + this.lastName);
+                        break;
+                    case 6:
+                        // Closes the program
+                        System.out
+                                .println("The program is now ending.\nThank you for using Jordan's Email Application!");
+                        menuScanner.close();
+                        System.exit(0);
+                        break;
+                    default:
+                        // If user enters an unavailable number, a message is displayed and the menu
+                        // restarts
+                        System.out.println("\nPlease enter a valid integer corresponding with your choice");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please type your corresponding menu choice!");
+                menuScanner.next();
             }
         }
-
-        while (menuChoice != 6);
 
     }
 }
