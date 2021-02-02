@@ -19,7 +19,7 @@ public class Email {
         this.firstName = firstName;
         this.lastName = lastName;
         System.out.println("\n");
-        System.out.println("Hello, " + this.firstName + " " + this.lastName + "!");
+        System.out.println("\nHello, " + this.firstName + " " + this.lastName + "!");
 
         // Calls method asking for the department, then returns the response
         this.department = setDepartment();
@@ -69,13 +69,13 @@ public class Email {
                         break;
                     }
                     default: {
-                        System.out.println("Please type your corresponding department number!");
+                        System.out.println("\nPlease type your corresponding department number!");
                         break;
                     }
                 }
             //Catches error if user enters anything that isn't an integer
             } catch (InputMismatchException e) {
-                System.out.println("Please type your corresponding department number!");
+                System.out.println("\nPlease type your corresponding department number!");
                 deptScanner.next();
             }
         }
@@ -164,52 +164,47 @@ public class Email {
                         System.out.println(this.showInfo());
                         break;
                     case 2:
-                        // Begins process for changing the password with a scanner input, then restarts
-                        // menu
+                        // Begins process for changing the password with a scanner input, then restarts menu
                         System.out.println("\nWhat would you like to change your password to?");
                         this.changePassword(menuScanner.next());
                         System.out.println("Change successful! Your password is now " + this.password);
                         break;
                     case 3:
-                        // Begins process for changing the alternate email with a scanner input, then
-                        // restarts menu
+                        // Begins process for changing the alternate email with a scanner input, then restarts menu
                         System.out.println("\nWhat email would you like to set as your alternate?");
                         this.setAlternateEmail(menuScanner.next());
-                        System.out.println("Change successful! Your alternate email is now " + this.alternateEmail);
+                        System.out.println("\nChange successful! Your alternate email is now " + this.alternateEmail);
                         break;
                     case 4:
-                        // Begins process for changing the mailbox capacity with a scanner integer
-                        // input, then restarts menu
+                        // Begins process for changing the mailbox capacity with a scanner integer input, then restarts menu
                         System.out.println("\nWhat would you like to change your mailbox capacity to? (in MB)");
                         this.setMailboxCapacity(menuScanner.nextInt());
-                        System.out.println(
-                                "Change successful! Your mailbox capacity is now " + this.mailboxCapacity + "mb");
+                        System.out.println("\nChange successful! Your mailbox capacity is now " + this.mailboxCapacity + "mb");
                         break;
                     case 5:
-                        // Begins process for changing the user's first and last name with a scanner
-                        // input, then restarts menu
+                        // Begins process for changing the user's first and last name with a scanner input, then restarts menu
                         System.out.println("\nWhat is your first name?");
                         this.setFirstName(menuScanner.next());
-                        System.out.println("Change successful! Your first name is now " + this.firstName);
+                        System.out.println("\nChange successful! Your first name is now " + this.firstName);
                         System.out.println("\nWhat is your last name?");
                         this.setLastName(menuScanner.next());
-                        System.out.println("Change successful! Your last name is now " + this.lastName);
+                        System.out.println("\nChange successful! Your last name is now " + this.lastName);
+                        System.out.println("\nHello, " + this.firstName + " " + this.lastName + "!");
                         break;
                     case 6:
                         // Closes the program
-                        System.out.println("The program is now ending.\nThank you for using Jordan's Email Application!");
+                        System.out.println("\nThe program is now ending.\nThank you for using Jordan's Email Application!");
                         menuScanner.close();
                         System.exit(0);
                         break;
                     default:
-                        // If user enters an unavailable number, a message is displayed and the menu
-                        // restarts
+                        // If user enters an unavailable number, a message is displayed and the menu restarts
                         System.out.println("\nPlease enter a valid integer corresponding with your choice");
                         break;
                 }
             //Catches error if user enters anything that isn't an integer
             } catch (InputMismatchException e) {
-                System.out.println("Please type your corresponding menu choice!");
+                System.out.println("\nPlease type your corresponding menu choice!");
                 menuScanner.next();
             }
         }
